@@ -30,6 +30,7 @@ for i, parameter_set in enumerate(parameters):
     tip_y = image_height / 3 + tip_font_size / 2
 
     for line in tip_lines:
+        print(line)
         draw.text((tip_x, tip_y), line, font=font, fill=(255, 255, 255))
         tip_y += tip_font_size + tip_font_size/2
 
@@ -43,7 +44,6 @@ for i, parameter_set in enumerate(parameters):
 
     # add the title, tip, website, and Instagram username to the image
     draw.text((title_x, title_y), parameter_set['title'], font=font, fill=(255, 255, 255))
-    draw.text((tip_x, tip_y), parameter_set['tip'], font=font, fill=(255, 255, 255))
     draw.text((website_x, website_y), parameter_set['website'], font=font, fill=(255, 255, 255))
     draw.text((ig_username_x, ig_username_y), '@' + parameter_set['ig_username'], font=font, fill=(255, 255, 255))
 
