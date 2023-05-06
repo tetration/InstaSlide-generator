@@ -1,0 +1,14 @@
+[
+  {
+    "title": "Day 1",
+    "tip": "Always remember to test your code thoroughly!",
+    "website": "www.example.com",
+    "ig_username": "example"
+  },
+  {
+    "title": "Day 2",
+    "tip": "Use version control to keep track of changes to your code.",
+    "website": "www.example.com",
+    "ig_username": "example"
+  }
+]

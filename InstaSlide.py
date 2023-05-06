@@ -1,6 +1,18 @@
 import json, textwrap
 from PIL import Image, ImageDraw, ImageFont, ImageFilter
 
+def generate_gradient(
+        colour1: str, colour2: str, width: int, height: int) -> Image:
+        base = Image.new('RGB', (width, height), colour1)
+        top = Image.new('RGB', (width, height), colour2)
+        mask = Image.new('L', (width, height))
+        mask_data = []
+        for y in range(height):
+            mask_data.extend([int(255 * (y / height))] * width)
+        mask.putdata(mask_data)
+        base.paste(top, (0, 0), mask)
+        return base
+
 # load parameters from JSON file
 with open('parameters.json') as f:
     parameters = json.load(f)
@@ -15,8 +27,8 @@ font = ImageFont.truetype('arial.ttf', font_size)
 # create a new image for each set of parameters
 for i, parameter_set in enumerate(parameters):
     # create a new image with the desired size and color
-    image = Image.new('RGB', (image_width, image_height), color=(0, 0, 0))
-
+    #image = Image.new('RGB', (image_width, image_height), color=(0, 0, 0))
+    image = generate_gradient(69,112,1080,1080)
     # create a draw object for the image
     draw = ImageDraw.Draw(image)
 
@@ -67,3 +79,5 @@ for i, parameter_set in enumerate(parameters):
     back_im.paste(im2, (300, 500), mask_im_blur)
     #overwrite the slides with your profile pictures inside them
     back_im.save('slide{}.png'.format(i+1), quality=100)
+
+
